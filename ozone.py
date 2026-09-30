@@ -88,7 +88,7 @@ def main():
         "1st Max Hour","AQI","Method Code","Method Name","Local Site Name","Address",
         "State Name","County Name","City Name","CBSA Name","Date of Last Change"]
     
-    df = pd.read_csv("daily_44201_2021.csv", names=headers, header=0)
+    df = pd.read_csv("daily_44201_2021.csv", names=headers, header=0, low_memory=False)
     #Infinite loop for state selection
     while True:
         state_code = input("please enter a 2 letter state code (Q to quit): ").strip().upper()
@@ -106,6 +106,7 @@ def main():
             counties = sorted(list(set(df_state['County Name'])))
 
             #print all the counties with an index
+            print()
             for idx, county in enumerate(counties):
                 print(f"{idx}: {county}")
 
